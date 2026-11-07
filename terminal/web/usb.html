@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>U 盘与修订 — 湿喷台车车载终端</title>
+<link rel="stylesheet" href="style.css?v=1103">
+</head>
+<body data-page="usb">
+
+<div id="chrome"></div>
+
+<div class="wrap" style="grid-template-columns:minmax(380px,.8fr) minmax(420px,1.2fr)">
+
+  <!-- ===================== ① 导出 ===================== -->
+  <div class="card">
+    <h2><span class="ttl">① 导出到 U 盘</span></h2>
+    <div class="body">
+      <div class="row">
+        <span class="lbl">范围</span>
+        <select id="exp-scope">
+          <option value="pending">待上传的</option>
+          <option value="today">今天的</option>
+          <option value="all">全部</option>
+        </select>
+        <span class="lbl">条数</span>
+        <select id="exp-limit">
+          <option value="500">500</option>
+          <option value="2000" selected>2000</option>
+          <option value="10000">10000</option>
+        </select>
+        <button id="btn-export">导出到 U 盘</button>
+      </div>
+      <div class="note">
+        导出将在 U 盘根目录写入三个文件：<code>frames.csv</code>（数据）、
+        <code>manifest.json</code>（清单，含 sha256 校验值与数据时间范围）、
+        <code>说明.txt</code>（现场阅读用的说明）。<br>
+        CSV 文件带 BOM 头，Excel 可直接打开且中文显示正常；列名使用 ASCII 字符，
+        中文名称由平台侧完成映射。
+      </div>
+      <div class="kvs">
+        <div class="kv"><span>待上传的</span><b>只导出尚未上传成功的记录</b></div>
+        <div class="kv"><span>今天的</span><b>只导出当天产生的记录</b></div>
+        <div class="kv"><span>全部</span><b>导出本地留存的全部记录</b></div>
+        <div class="kv"><span>回执内容</span><b>导出条数、时间范围与文件摘要</b></div>
+      </div>
+      <div id="exp-result"><div class="note">选择导出范围后点『导出到 U 盘』，导出回执将显示在这里</div></div>
+    </div>
+  </div>
+
+  <!-- ===================== U 盘上的包 ===================== -->
+  <div class="card">
+    <h2><span class="ttl">U 盘上的包</span> <span class="spacer"></span>
+      <span id="bundlecount" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="scroll">
+        <table class="grid">
+          <thead><tr>
+            <th>导出时间</th><th class="num">条数</th><th>数据时间范围</th><th>完整性</th>
+          </tr></thead>
+          <tbody id="bundlelist"></tbody>
+        </table>
+      </div>
+      <div class="note">U 盘目录：<code id="usbdir">—</code><br>
+        点击表格中的一行即可选中该导出包，下方两步操作均针对选中的包执行。</div>
+      <div class="kvs">
+        <div class="kv"><span>完整</span><b>数据与清单文件齐全，可校验比对</b></div>
+        <div class="kv"><span>缺清单 / 缺数据</span><b>文件不全，校验时会有相应提示</b></div>
+        <div class="kv"><span>数据时间范围</span><b>该包首条至末条记录的时间</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ② 校验比对 ===================== -->
+<div class="wrap" style="grid-template-columns:1fr;padding-top:0">
+  <div class="card">
+    <h2><span class="ttl">② 校验与比对</span>
+      <span class="spacer"></span>
+      <span style="font-weight:400">选中：<code id="bundlepath">—</code></span>
+    </h2>
+    <div class="body">
+      <div class="row">
+        <select id="ins-bundle" style="min-width:320px"></select>
+        <button id="btn-inspect">校验并比对（不写库）</button>
+        <span class="spacer"></span>
+        <span class="lbl">演示改动</span>
+        <select id="edit-key">
+          <option value="cylinderPumpingPressure">泵送压力</option>
+          <option value="acceleratorAddSpeed">速凝剂添加速度</option>
+          <option value="pumpingSpeed">泵送速度</option>
+          <option value="acceleratorProportion">速凝剂占比</option>
+        </select>
+        <button id="btn-edit" class="danger">模拟在别的电脑上改 2 行</button>
+      </div>
+      <div class="note" id="edit-note">
+        演示改动用于快速制造数据差异（真机上是人用 Excel 改导出文件）。此操作
+        <b>不更新 row_hash</b>，正好同时暴露「内容已变」与「摘要不一致」两项证据。
+      </div>
+      <div class="kvs" style="margin-top:8px">
+        <div class="kv"><span>共</span><b>包内参与比对的记录总数</b></div>
+        <div class="kv"><span>一致</span><b>内容与本机记录相同</b></div>
+        <div class="kv"><span>有改动</span><b>内容与导出时不相同</b></div>
+        <div class="kv"><span>不在本机</span><b>本机库查无该记录</b></div>
+        <div class="kv"><span>不合法</span><b>记录未通过完整性校验</b></div>
+      </div>
+      <div id="ins-report" style="margin-top:8px">
+        <div class="note">选中上面的包后点『校验并比对』，比对结果将显示在这里</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js?v=1103"></script>
+</body>
+</html>

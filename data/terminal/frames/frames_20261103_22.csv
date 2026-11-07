@@ -1,0 +1,3 @@
+﻿record_id,device_code,ts_device,ts_epoch,seq,pile_id,quality,source,workStatus,cylinderPumpingPressure,pumpingSpeed,circulatingPumpingVolume,acceleratorAddSpeed,acceleratorProportion,acceleratorOnceDosage,acceleratorCumulativeDosage,row_hash
+GHP9015H:1793716691022:5080,GHP9015H,2026-11-03T14:38:11.022+00:00,1793716691022,5080,ZK105+707,0,can,0.0,0.077507,0.0,0.0,0.0,0.0,0.0,945.36,d512e40f3b749e8c
+GHP9015H:1793716693022:5081,GHP9015H,2026-11-03T14:38:13.022+00:00,1793716693022,5081,ZK105+707,0,can,0.0,0.0,0.0,0.0,0.0,0.0,0.0,945.36,b31d57179a01ba5b

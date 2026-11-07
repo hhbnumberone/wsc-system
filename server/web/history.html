@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>历史数据 — 耿力大数据平台</title>
+<link rel="stylesheet" href="style.css?v=1103">
+</head>
+<body data-page="history">
+
+<div class="topbar">
+  <div class="brand">耿力大数据平台<small>历史数据</small></div>
+  <div class="spacer"></div>
+  <button id="btn-shutdown" class="shutdown">关闭系统</button>
+  <div class="meta">
+    <div id="site">—</div>
+    <div id="clock">--:--:--</div>
+  </div>
+</div>
+
+<div class="frame">
+    <aside class="side">
+    <div class="side-grp">实时监测</div>
+    <a href="/" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm10 8h8V11h-8v10zM3 21h8v-6H3v6zm10-12h8V3h-8v6z"/></svg><span>运行总览</span></a>
+    <a href="/alarms.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22a2 2 0 002-2h-4a2 2 0 002 2zm6-6v-5a6 6 0 10-12 0v5l-2 2v1h16v-1l-2-2z"/></svg><span>报警与循环</span></a>
+    <div class="side-grp">历史查询</div>
+    <a href="/history.html" class=" on"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg><span>历史数据</span></a>
+    <a href="/frames.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm2 2v4h14V5H5zm0 6v4h14v-4H5zm0 6v2h14v-2H5z"/></svg><span>原始记录</span></a>
+    <div class="side-grp">传输审计</div>
+    <a href="/devices.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v4H4zm0 8h16v4H4zm-2-9h2v2H2zm0 8h2v2H2zm18 8h2v2h-2zM2 21h16v2H2z"/></svg><span>传输监控</span></a>
+    <a href="/audit.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg><span>审计与拒收</span></a>
+  </aside>
+
+<main>
+  <div id="banner" class="banner hidden"></div>
+
+  <div class="row cols-4">
+    <div class="card kpi accent">
+      <div class="k">区间内的记录</div>
+      <div class="v" id="h-frames">—</div>
+      <div class="s" id="h-range">—</div>
+    </div>
+    <div class="card kpi ok">
+      <div class="k">区间内实喷方量</div>
+      <div class="v" id="h-volume">—</div>
+      <div class="s">按日志数据的实喷方量累加</div>
+    </div>
+    <div class="card kpi">
+      <div class="k">区间内报警</div>
+      <div class="v" id="h-alarms">—</div>
+      <div class="s">边沿触发 + 回滞，一次越限只记一条</div>
+    </div>
+    <div class="card kpi warn">
+      <div class="k">被修正的记录</div>
+      <div class="v" id="h-rev">—</div>
+      <div class="s">原始值永久保留，修改单独留痕</div>
+    </div>
+  </div>
+
+  <div class="card mt grow">
+    <h2>历史曲线
+      <span class="spacer"></span>
+      <span class="ctrl">
+        <label>参数</label><select id="param"></select>
+        <label>粒度</label>
+        <select id="bucket">
+          <option value="hour" selected>按小时</option>
+          <option value="day">按天</option>
+        </select>
+        <label>范围</label>
+        <select id="days">
+          <option value="1">最近 1 天</option>
+          <option value="3">最近 3 天</option>
+          <option value="7" selected>最近 7 天</option>
+          <option value="30">最近 30 天</option>
+          <option value="90">最近 90 天</option>
+        </select>
+        <span class="note" id="h-stat"></span>
+      </span>
+    </h2>
+    <div class="body">
+      <canvas id="hchart" width="1100" height="300"></canvas>
+      <div class="legend" id="hlegend"></div>
+      <p class="note">
+        柱体为各时段平均值，上下须线为该时段最大/最小值；底色标红的时段表示出现过报警。
+      </p>
+    </div>
+  </div>
+
+
+</main>
+</div>
+
+<div id="drawer" class="hidden"></div>
+
+<script src="app.js?v=1103"></script>
+</body>
+</html>

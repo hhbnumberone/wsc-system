@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>湿喷台车车载终端</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="index">
+
+<!-- 状态栏、导航、横幅由 app.js 挂载（三个页面共用，见 mountChrome） -->
+<div id="chrome"></div>
+
+<div class="wrap">
+
+  <!-- ===================== 左：实时参数 ===================== -->
+  <div class="card">
+    <h2>监测实时数据 <span class="spacer"></span>
+      <span id="sampleinfo" style="font-weight:400"></span>
+    </h2>
+    <div class="body" id="params">
+      <div class="note">正在采集…</div>
+    </div>
+  </div>
+
+  <!-- ===================== 中：曲线 + 循环 ===================== -->
+  <div class="card">
+    <h2>实时曲线 <span class="spacer"></span>
+      <span id="charttitle" style="font-weight:400">泵送压力</span>
+    </h2>
+    <div class="body">
+      <canvas id="chart" width="760" height="226"></canvas>
+      <div class="legend">
+        <span><i style="background:#33b1ff"></i>实测值</span>
+        <span><i style="background:#ff5f6d"></i>上限</span>
+        <span><i style="background:#ffb454"></i>下限</span>
+        <span id="chartstat"></span>
+      </div>
+      <div class="note">点左边任意参数名即可切换曲线 —— 曲线读的是本地库里的原始记录，
+        和上传是两条路：<b>断网时曲线照样在走</b>。</div>
+    </div>
+  </div>
+
+  <!-- ===================== 右：桩号 + 循环 ===================== -->
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div class="card">
+      <h2>作业桩号 <span class="spacer"></span>
+        <span id="pilever" style="font-weight:400"></span>
+      </h2>
+      <div class="body">
+        <div id="pilelist"></div>
+        <div class="note">
+          桩号只能从平台下发的清单里点选。<br>
+          界面上没有可输入桩号的地方 ——
+          <code>这是设计出来的，不是漏做了</code>。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>喷浆循环 <span class="spacer"></span>
+        <span id="cycstat" style="font-weight:400"></span>
+      </h2>
+      <div class="body">
+        <div id="cycnow" class="note">尚未开始</div>
+        <div class="scroll" style="margin-top:8px">
+          <table class="grid">
+            <thead><tr><th>桩号</th><th>开始</th><th class="num">方量</th><th class="num">历时</th></tr></thead>
+            <tbody id="cyclist"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>演示操作</h2>
+      <div class="body row">
+        <button id="btn-offline" class="danger">模拟断网</button>
+        <button id="btn-upload">立即上传</button>
+      </div>
+      <div class="body note" style="padding-top:0">
+        断网期间数据照采照存，恢复后按时间顺序补传。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 底部：上传记录 ===================== -->
+<div class="wrap" style="grid-template-columns:1.15fr 1fr;padding-top:0">
+  <div class="card">
+    <h2>采集记录（本地库） <span class="spacer"></span>
+      <span id="locstatinfo" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="scroll">
+        <table class="grid">
+          <thead><tr>
+            <th>时间</th><th>桩号</th><th>压力</th><th>速凝剂</th>
+            <th>油温</th><th>状态</th>
+          </tr></thead>
+          <tbody id="reclist"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>上传记录 <span class="spacer"></span>
+      <span id="uploadinfo" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="scroll">
+        <table class="grid">
+          <thead><tr>
+            <th>时间</th><th>类型</th><th>批次</th><th class="num">条数</th>
+            <th>结果</th><th class="num">耗时</th><th>说明</th>
+          </tr></thead>
+          <tbody id="uplist"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="note" style="padding:0 14px 24px">
+  本地存储：<span id="storage">—</span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

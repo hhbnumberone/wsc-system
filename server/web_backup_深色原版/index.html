@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>耿力大数据平台 — 湿喷台车监测</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="overview">
+
+<div class="topbar">
+  <div class="brand">耿力大数据平台<small id="proj">湿喷台车信息化系统</small></div>
+  <nav>
+    <a href="/" class="on">运行总览</a>
+    <a href="/history.html">历史数据</a>
+    <a href="/devices.html">设备与传输</a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="meta">
+    <div id="site">—</div>
+    <div id="clock">--:--:--</div>
+  </div>
+</div>
+
+<main>
+  <div id="banner" class="banner hidden"></div>
+
+  <!-- ---------------- KPI ---------------- -->
+  <div class="row cols-4">
+    <div class="card kpi" id="k-dev"><div class="k">设备在线</div><div class="v">—</div><div class="s">—</div></div>
+    <div class="card kpi accent" id="k-frames"><div class="k">近 24 小时采集</div><div class="v">—</div><div class="s">—</div></div>
+    <div class="card kpi ok" id="k-cycles"><div class="k">近 24 小时喷浆</div><div class="v">—</div><div class="s">—</div></div>
+    <div class="card kpi" id="k-alarm"><div class="k">报警</div><div class="v">—</div><div class="s">—</div></div>
+  </div>
+
+  <!-- ---------------- 实时曲线 ---------------- -->
+  <div class="row cols-2b mt">
+    <div class="card">
+      <h2>实时曲线
+        <span class="spacer"></span>
+        <span class="ctrl">
+          <label>时间窗</label>
+          <select id="win">
+            <option value="10" selected>最近 10 分钟</option>
+            <option value="30">最近 30 分钟</option>
+            <option value="120">最近 2 小时</option>
+            <option value="1440">最近 24 小时</option>
+          </select>
+          <span id="series-stat" class="note"></span>
+        </span>
+      </h2>
+      <div class="body">
+        <canvas id="chart" width="1000" height="250"></canvas>
+        <div class="legend" id="legend"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>设备状态 <span class="spacer"></span><span class="note" id="dev-count"></span></h2>
+      <div class="body dev" id="devbox"><div class="empty">加载中…</div></div>
+    </div>
+  </div>
+
+  <!-- ---------------- 报警 + 循环 ---------------- -->
+  <div class="row cols-2 mt">
+    <div class="card">
+      <h2>报警记录 <span class="spacer"></span>
+        <span class="ctrl">
+          <label><input type="checkbox" id="actonly"> 只看未恢复</label>
+          <span class="note" id="alarm-stat"></span>
+        </span>
+      </h2>
+      <div class="body tight">
+        <div class="scroll sm">
+          <table class="grid">
+            <thead><tr>
+              <th>开始</th><th>参数</th><th>级别</th><th class="num">峰值</th>
+              <th class="num">时长</th><th>状态</th><th>桩号</th>
+            </tr></thead>
+            <tbody id="alarms"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>喷浆循环 <span class="spacer"></span><span class="note" id="cyc-stat"></span></h2>
+      <div class="body tight">
+        <div class="scroll sm">
+          <table class="grid">
+            <thead><tr>
+              <th>开始</th><th>桩号</th><th class="num">方量</th>
+              <th class="num">历时</th><th class="num">峰值压力</th>
+            </tr></thead>
+            <tbody id="cycles"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="note mt" style="padding:0 2px">
+    数据来源：车载终端按 <code id="interval">2</code> 秒一帧采集，断网期间在本地缓存，
+    恢复后按时序补传。平台只接受<strong>平台已下发桩号</strong>的记录 ——
+    终端界面上没有桩号输入框，改不了里程。
+    <a href="/devices.html" style="color:var(--accent)">查看传输与拒收明细 →</a>
+  </p>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

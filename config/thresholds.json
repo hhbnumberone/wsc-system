@@ -1,0 +1,74 @@
+{
+  "workStatus": {
+    "name": "工作状态",
+    "lo": 0.0,
+    "hi": 1.0,
+    "hyst": 0.05,
+    "min_duration_s": 3.0,
+    "clear_after_s": 10.0,
+    "alarm_level": null
+  },
+  "cylinderPumpingPressure": {
+    "name": "泵送压力",
+    "lo": 3.0,
+    "hi": 16.0,
+    "hyst": 0.05,
+    "min_duration_s": 3.0,
+    "clear_after_s": 10.0,
+    "alarm_level": "critical"
+  },
+  "pumpingSpeed": {
+    "name": "泵送速度",
+    "lo": 3.0,
+    "hi": 40.0,
+    "hyst": 0.05,
+    "min_duration_s": 5.0,
+    "clear_after_s": 10.0,
+    "alarm_level": "warning"
+  },
+  "circulatingPumpingVolume": {
+    "name": "循环泵送方量",
+    "lo": 0.0,
+    "hi": 100000.0,
+    "hyst": 0.05,
+    "min_duration_s": 3.0,
+    "clear_after_s": 10.0,
+    "alarm_level": null
+  },
+  "acceleratorAddSpeed": {
+    "name": "速凝剂添加速度",
+    "lo": 250.0,
+    "hi": 900.0,
+    "hyst": 0.05,
+    "min_duration_s": 3.0,
+    "clear_after_s": 10.0,
+    "alarm_level": "critical"
+  },
+  "acceleratorProportion": {
+    "name": "速凝剂占比",
+    "lo": 0.0,
+    "hi": 20.0,
+    "hyst": 0.05,
+    "min_duration_s": 3.0,
+    "clear_after_s": 10.0,
+    "alarm_level": null
+  },
+  "acceleratorOnceDosage": {
+    "name": "速凝剂单次用量",
+    "lo": 0.0,
+    "hi": 10000.0,
+    "hyst": 0.05,
+    "min_duration_s": 3.0,
+    "clear_after_s": 10.0,
+    "alarm_level": null
+  },
+  "acceleratorCumulativeDosage": {
+    "name": "速凝剂累计用量",
+    "lo": 0.0,
+    "hi": 10000000.0,
+    "hyst": 0.05,
+    "min_duration_s": 3.0,
+    "clear_after_s": 10.0,
+    "alarm_level": null
+  }
+}

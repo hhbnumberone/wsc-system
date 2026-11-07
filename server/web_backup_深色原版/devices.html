@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>设备与传输 — 耿力大数据平台</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="devices">
+
+<div class="topbar">
+  <div class="brand">耿力大数据平台<small>设备与传输</small></div>
+  <nav>
+    <a href="/">运行总览</a>
+    <a href="/history.html">历史数据</a>
+    <a href="/devices.html" class="on">设备与传输</a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="meta">
+    <div id="site">—</div>
+    <div id="clock">--:--:--</div>
+  </div>
+</div>
+
+<main>
+  <div id="banner" class="banner hidden"></div>
+
+  <div class="row cols-4">
+    <div class="card kpi" id="d-dev"><div class="k">设备</div><div class="v">—</div><div class="s">在线判定看心跳新鲜度，不看状态字段</div></div>
+    <div class="card kpi accent"><div class="k">接收批次</div><div class="v" id="d-batch">—</div><div class="s">同一批次重复上送只入库一次</div></div>
+    <div class="card kpi warn"><div class="k">终端欠传</div><div class="v" id="d-backlog">—</div><div class="s">设备本地还没传上来的记录数</div></div>
+    <div class="card kpi bad"><div class="k">被拒收</div><div class="v" id="d-reject">—</div><div class="s">按原因分类，见下表</div></div>
+  </div>
+
+  <div class="card mt">
+    <h2>设备清单</h2>
+    <div class="body tight">
+      <table class="grid">
+        <thead><tr>
+          <th>设备</th><th>状态</th><th>最后心跳</th><th>链路</th>
+          <th class="num">欠传</th><th>工点</th><th>说明</th>
+        </tr></thead>
+        <tbody id="devices"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row cols-2 mt">
+    <div class="card">
+      <h2>上传批次 <span class="spacer"></span><span class="note" id="b-stat"></span></h2>
+      <div class="body tight">
+        <div class="scroll">
+          <table class="grid">
+            <thead><tr>
+              <th>平台收妥时间</th><th>批次号</th><th>类型</th>
+              <th class="num">条数</th><th class="num">接受</th><th class="num">重复</th>
+              <th class="num">拒收</th>
+            </tr></thead>
+            <tbody id="batches"></tbody>
+          </table>
+        </div>
+        <p class="note" style="padding:10px 14px 14px">
+          批次号是<strong>内容寻址</strong>的：<code>sha1(排序后的 record_id 前 16 位)</code>。
+          同一批数据重发时批次号不变，平台返回上一份回执并标 <span class="tag dim">重复</span> ——
+          这就是"断网重连后怎么补都不会重"的机制。
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>拒收明细 <span class="spacer"></span><span class="note" id="r-stat"></span></h2>
+      <div class="body tight">
+        <div class="scroll">
+          <table class="grid">
+            <thead><tr>
+              <th>时间</th><th>记录</th><th>原因</th><th>说明</th>
+            </tr></thead>
+            <tbody id="rejects"></tbody>
+          </table>
+        </div>
+        <p class="note" style="padding:10px 14px 14px">
+          最常见的拒收原因是 <code>PILE_NOT_ISSUED</code>：记录里的桩号不在平台下发的清单里。
+          平台侧<strong>入库前再校验一次</strong>桩号，是桩号防伪的最后一层。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt">
+    <h2>操作留痕（审计事件） <span class="spacer"></span><span class="note" id="a-stat"></span></h2>
+    <div class="body tight">
+      <div class="scroll">
+        <table class="grid">
+          <thead><tr>
+            <th>设备时间</th><th>平台收到</th><th>事件</th><th>内容</th>
+          </tr></thead>
+          <tbody id="audit"></tbody>
+        </table>
+      </div>
+      <p class="note" style="padding:10px 14px 14px">
+        切换桩号、手动补传、U 盘导出/导入、数据修订都作为独立事件上传，
+        <strong>即使数据本体还没传上来也照样留痕</strong>。
+      </p>
+    </div>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

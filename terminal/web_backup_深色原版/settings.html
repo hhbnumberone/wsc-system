@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>设置与诊断 — 湿喷台车车载终端</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="settings">
+
+<div id="chrome"></div>
+
+<div class="wrap" style="grid-template-columns:minmax(300px,.85fr) minmax(340px,1fr) minmax(260px,.7fr)">
+
+  <!-- ===================== 工点与设备（现场录入） ===================== -->
+  <div class="card" style="grid-column:1 / -1">
+    <h2>工点与设备（现场录入） <span class="spacer"></span>
+      <span id="idnow" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="row">
+        <label class="lbl" for="id-site">工点 ID</label>
+        <input id="id-site" type="text" autocomplete="off" spellcheck="false"
+               placeholder="例如 DQTYX-ZK" style="width:170px">
+        <label class="lbl" for="id-device">设备编号</label>
+        <input id="id-device" type="text" autocomplete="off" spellcheck="false"
+               placeholder="例如 GHP9015H" style="width:170px">
+        <button id="btn-id-check">1. 请平台核对</button>
+        <button id="btn-id-apply" disabled>2. 保存并生效</button>
+      </div>
+
+      <div id="id-verdict" class="okbox" style="margin-top:10px">
+        <span class="muted">填好上面的两项，先点「请平台核对」。</span>
+      </div>
+
+      <div class="note">
+        <b>工点 ID 必须先在平台上建档</b>，终端只能引用、不能自己编
+        —— 和桩号是同一个道理。平台没有的工点 ID 会被当场拒掉，并告诉你平台上有哪些。<br>
+        <b>设备编号可以改</b>，但同样要过平台核对，改完会留一条
+        <code>identity_change</code> 记录（原编号、新编号、原工点、新工点）。
+        <b>换编号前必须先结清欠账</b>：本地还有没传完的数据时，两个按钮都会拒绝 ——
+        那些数据的 ID 里嵌着旧编号，换了编号再传，平台会按设备不匹配整批拒收。<br>
+        桩号仍然<b>没有输入框</b>：这里是身份，不是桩号。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 设备与链路 ===================== -->
+  <div class="card">
+    <h2>设备与链路</h2>
+    <div class="body"><div id="devinfo" class="kvs"></div></div>
+  </div>
+
+  <!-- ===================== 故障注入 ===================== -->
+  <div class="card">
+    <h2>故障注入（演示用） <span class="spacer"></span>
+      <span id="faultstat" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="row" id="faultbtns"></div>
+      <div class="note">
+        注入的是<b>确定性</b>的偏差：几秒内爬到目标值、保持一段时间、再自己退回去。
+        平台侧的报警按边沿触发 + 回滞判定，所以这里注入一次，
+        平台那边应该<b>只出现一条</b>报警 —— 不是刷一屏。
+      </div>
+      <div id="faultlist" style="margin-top:8px"></div>
+      <div class="row" style="margin-top:8px">
+        <button id="btn-clear-fault">清除全部故障</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 桩号清单 ===================== -->
+  <div class="card">
+    <h2>桩号清单 <span class="spacer"></span>
+      <span id="pilever" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div id="setpilelist" class="pil"><div class="note">加载中…</div></div>
+      <div class="note">
+        清单由平台下发，终端只缓存和展示。<br>
+        这里点选和首页点选是同一件事 ——
+        <code>终端任何地方都没有输入桩号的地方</code>。
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="grid-template-columns:minmax(420px,1fr) minmax(420px,1.1fr);padding-top:0">
+
+  <!-- ===================== 参数与阈值 ===================== -->
+  <div class="card">
+    <h2>参数与阈值（只读）</h2>
+    <div class="body">
+      <div class="scroll" style="max-height:420px">
+        <table class="grid">
+          <thead><tr>
+            <th>参数</th><th>键名</th><th class="num">正常范围</th><th>单位</th>
+          </tr></thead>
+          <tbody id="paramlist"></tbody>
+        </table>
+      </div>
+      <div class="note">
+        这张表就是采集、CSV 表头、平台判定共用的那一份注册表
+        （<code>common/params.py</code>），界面不另写一套。<br>
+        界面上<b>不提供改阈值</b>：现场把报警线改没了，等到出事才发现，
+        这种事不值得为"方便"留口子。要改走配置文件和重启，改了什么有记录。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 日志 ===================== -->
+  <div class="card">
+    <h2>运行日志 <span class="spacer"></span>
+      <span id="loginfo" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="row">
+        <select id="logfile" style="min-width:180px"></select>
+        <button id="btn-log">刷新尾部</button>
+      </div>
+      <pre id="logbody" class="logbox"></pre>
+      <div class="note">
+        只读尾部 200 行，不追 tail —— 演示时是要"看一眼刚才那件事发生了什么"，
+        不是要一个实时滚动的终端。
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

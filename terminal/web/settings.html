@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>设置与诊断 — 湿喷台车车载终端</title>
+<link rel="stylesheet" href="style.css?v=1103">
+</head>
+<body data-page="settings">
+
+<div id="chrome"></div>
+
+<div class="wrap" style="grid-template-columns:minmax(300px,.85fr) minmax(340px,1fr) minmax(260px,.7fr)">
+
+  <!-- ===================== 工点与设备（现场录入） ===================== -->
+  <div class="card" style="grid-column:1 / -1">
+    <h2><span class="ttl">工点与设备（现场录入）</span> <span class="spacer"></span>
+      <span id="idnow" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="row">
+        <label class="lbl" for="id-site">工点 ID</label>
+        <input id="id-site" type="text" autocomplete="off" spellcheck="false"
+               placeholder="例如 DQTYX-ZK" style="width:170px">
+        <label class="lbl" for="id-device">设备编号</label>
+        <input id="id-device" type="text" autocomplete="off" spellcheck="false"
+               placeholder="例如 GHP9015H" style="width:170px">
+        <button id="btn-id-check">1. 请平台核对</button>
+        <button id="btn-id-apply" disabled>2. 保存并生效</button>
+      </div>
+
+      <div id="id-verdict" class="okbox" style="margin-top:10px">
+        <span class="muted">填好上面的两项，先点「请平台核对」。</span>
+      </div>
+
+      <div class="note">
+        <b>工点 ID 须先在平台建档</b>，终端仅引用：平台没有的工点会被当场拒收，并列出可用的工点。<br>
+        <b>设备编号可以更改</b>，同样需要平台核对；更改后会留下一条 <code>identity_change</code>
+        留痕记录（含原编号、新编号、原工点、新工点）。<br>
+        <b>换编号前须先结清欠传数据</b>：本地尚有未上传记录时两个按钮都会拒绝执行，
+        避免旧数据携带旧编号、被平台按设备不匹配整批拒收。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 设备与链路 ===================== -->
+  <div class="card">
+    <h2><span class="ttl">设备与链路</span></h2>
+    <div class="body"><div id="devinfo" class="kvs"></div></div>
+  </div>
+
+  <!-- ===================== 故障注入 ===================== -->
+  <div class="card demo">
+    <h2><span class="ttl">故障注入（演示用）</span> <span class="spacer"></span>
+      <span id="faultstat" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="row" id="faultbtns"></div>
+      <div class="note">
+        注入为<b>确定性偏差</b>：升至目标值、保持一段时间后自动回落；
+        平台按边沿触发加回滞判定，单次注入只产生一条报警。
+      </div>
+      <div id="faultlist" style="margin-top:8px"></div>
+      <div class="row" style="margin-top:8px">
+        <button id="btn-clear-fault">清除全部故障</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 桩号清单 ===================== -->
+  <div class="card">
+    <h2><span class="ttl">桩号清单</span> <span class="spacer"></span>
+      <span id="pilever" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div id="setpilelist" class="pil"><div class="note">加载中…</div></div>
+      <div class="note">清单由平台统一下发，终端仅缓存与展示，<code>不提供手工录入</code>。</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="grid-template-columns:minmax(420px,1fr) minmax(420px,1.1fr);padding-top:0">
+
+  <!-- ===================== 参数与阈值 ===================== -->
+  <div class="card">
+    <h2><span class="ttl">参数与阈值（只读）</span></h2>
+    <div class="body">
+      <div class="scroll">
+        <table class="grid">
+          <thead><tr>
+            <th>参数</th><th>键名</th><th class="num">正常范围</th><th>单位</th>
+          </tr></thead>
+          <tbody id="paramlist"></tbody>
+        </table>
+      </div>
+      <div class="note">本表为采集、CSV 表头与平台判定共用的参数注册表；<b>阈值修改须走配置文件并重启</b>。</div>
+    </div>
+  </div>
+
+  <!-- ===================== 日志 ===================== -->
+  <div class="card">
+    <h2><span class="ttl">运行日志</span> <span class="spacer"></span>
+      <span id="loginfo" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="row">
+        <select id="logfile" style="min-width:180px"></select>
+        <button id="btn-log">刷新尾部</button>
+      </div>
+      <pre id="logbody" class="logbox"></pre>
+      <div class="note">每次读取日志尾部 200 行，用于回查刚发生的操作，非实时输出。</div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js?v=1103"></script>
+</body>
+</html>

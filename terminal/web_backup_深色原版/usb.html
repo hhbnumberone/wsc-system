@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>U 盘与修订 — 湿喷台车车载终端</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="usb">
+
+<div id="chrome"></div>
+
+<div class="wrap" style="grid-template-columns:minmax(380px,.8fr) minmax(420px,1.2fr)">
+
+  <!-- ===================== ① 导出 ===================== -->
+  <div class="card">
+    <h2>① 导出到 U 盘</h2>
+    <div class="body">
+      <div class="row">
+        <span class="lbl">范围</span>
+        <select id="exp-scope">
+          <option value="pending">待上传的</option>
+          <option value="today">今天的</option>
+          <option value="all">全部</option>
+        </select>
+        <span class="lbl">条数</span>
+        <select id="exp-limit">
+          <option value="500">500</option>
+          <option value="2000" selected>2000</option>
+          <option value="10000">10000</option>
+        </select>
+        <button id="btn-export">导出到 U 盘</button>
+      </div>
+      <div class="note">
+        导出会写下三个文件：<code>frames.csv</code>（数据）、
+        <code>manifest.json</code>（清单，含 sha256 与时间范围）、
+        <code>说明.txt</code>（给现场的人看的）。<br>
+        CSV 带 BOM，Excel 直接打开不乱码；列名是 ASCII 的，中文名在平台侧映射。
+      </div>
+      <div id="exp-result"></div>
+    </div>
+  </div>
+
+  <!-- ===================== U 盘上的包 ===================== -->
+  <div class="card">
+    <h2>U 盘上的包 <span class="spacer"></span>
+      <span id="bundlecount" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="scroll">
+        <table class="grid">
+          <thead><tr>
+            <th>导出时间</th><th class="num">条数</th><th>数据时间范围</th><th>完整性</th>
+          </tr></thead>
+          <tbody id="bundlelist"></tbody>
+        </table>
+      </div>
+      <div class="note">U 盘目录：<code id="usbdir">—</code><br>
+        点一行选中它，下面两步都针对选中的这个包。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ② 校验比对 ===================== -->
+<div class="wrap" style="grid-template-columns:1fr;padding-top:0">
+  <div class="card">
+    <h2>② 校验与比对
+      <span class="spacer"></span>
+      <span style="font-weight:400">选中：<code id="bundlepath">—</code></span>
+    </h2>
+    <div class="body">
+      <div class="row">
+        <select id="ins-bundle" style="min-width:320px"></select>
+        <button id="btn-inspect">校验并比对（不写库）</button>
+        <span class="spacer"></span>
+        <span class="lbl">演示改动</span>
+        <select id="edit-key">
+          <option value="pump_pressure">泵送压力</option>
+          <option value="accel_flow">速凝剂流量</option>
+          <option value="hyd_oil_temp">液压油温</option>
+          <option value="pump_air_path">泵送风路压力</option>
+        </select>
+        <button id="btn-edit" class="danger">模拟在别的电脑上改 2 行</button>
+      </div>
+      <div class="note" id="edit-note">
+        这一步只是把演示做短：真机上改动是人拿 Excel 干的，改完插回终端。
+        它<b>故意不改 row_hash</b> —— 所以"内容变了"和"摘要对不上"两处证据都能看到。
+      </div>
+      <div id="ins-report" style="margin-top:8px"></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="grid-template-columns:1fr 1fr;padding-top:0">
+
+  <!-- ===================== ③ 导入 ===================== -->
+  <div class="card">
+    <h2>③ 导入为修订</h2>
+    <div class="body">
+      <div class="row">
+        <span class="lbl">操作人</span>
+        <input id="imp-operator" placeholder="姓名（必填）" style="width:130px">
+        <span class="lbl">原因</span>
+        <select id="imp-reason" style="flex:1"></select>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <span class="lbl">备注</span>
+        <input id="imp-note" placeholder="选填，会一起上传" style="flex:1">
+        <button id="btn-import">导入为修订</button>
+      </div>
+      <div class="note">
+        导入<b>不覆盖原值</b>：平台收到的是"某条记录、某个参数、从多少改成多少、
+        谁改的、为什么"，原值永久保存。<br>
+        有一行不合法就整包不动 —— 宁可少改，不要错改。
+      </div>
+      <div id="imp-result"></div>
+    </div>
+  </div>
+
+  <!-- ===================== ④ 修订队列 ===================== -->
+  <div class="card">
+    <h2>④ 修订队列 <span class="spacer"></span>
+      <span id="revstat" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="scroll">
+        <table class="grid">
+          <thead><tr>
+            <th>生成时间</th><th>操作人</th><th>原因</th><th>改动</th><th>状态</th>
+          </tr></thead>
+          <tbody id="revlist"></tbody>
+        </table>
+      </div>
+      <div class="note">
+        修订批要<b>等欠传的数据先传完</b>再发。目标记录还没上平台的话，
+        平台会整批拒收 —— 而拒收是永久失败，只能人工处理。
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

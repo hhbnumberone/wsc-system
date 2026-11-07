@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>湿喷台车车载终端</title>
+<link rel="stylesheet" href="style.css?v=1103">
+</head>
+<body data-page="upload">
+
+<div id="chrome"></div>
+
+<div class="wrap" style="grid-template-columns:minmax(300px,.8fr) minmax(480px,1.6fr)">
+
+  <!-- ===================== 左：操作 + 本地存储 ===================== -->
+  <div class="colstack">
+    <div class="card demo">
+      <h2><span class="ttl">演示操作（仿真专用）</span></h2>
+      <div class="body">
+        <div class="row">
+          <button id="btn-offline" class="danger">模拟断网</button>
+          <button id="btn-upload">立即上传</button>
+        </div>
+        <div class="note">演示专用：模拟链路断开，或手动触发一次立即上传。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ttl">本地存储</span></h2>
+      <div class="body">
+        <div style="font-size:15px;margin-top:0">本地存储：<span id="storage">—</span></div>
+        <div class="kvs" style="margin-top:10px">
+          <div class="kv"><span>留存策略</span><b>本地留存 30 天，滚动清理</b></div>
+          <div class="kv"><span>未上传数据</span><b>永不清理，优先补传</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ttl">补传与去重</span></h2>
+      <div class="body">
+        <div class="kvs">
+          <div class="kv"><span>断网期间</span><b>照常采集与存储，不丢数据</b></div>
+          <div class="kv"><span>恢复联网</span><b>按时间顺序自动补传</b></div>
+          <div class="kv"><span>重复上传</span><b>批次号不变，平台去重不重复入库</b></div>
+          <div class="kv"><span>上传回执</span><b>每批返回回执，见右侧上传记录</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 右：上传记录 ===================== -->
+  <div class="card">
+    <h2><span class="ttl">上传记录</span> <span class="spacer"></span>
+      <span id="uploadinfo" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="scroll">
+        <table class="grid">
+          <thead><tr>
+            <th>时间</th><th>类型</th><th>批次</th><th class="num">条数</th>
+            <th>结果</th><th class="num">耗时</th><th>说明</th>
+          </tr></thead>
+          <tbody id="uplist"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js?v=1103"></script>
+</body>
+</html>

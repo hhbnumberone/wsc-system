@@ -1,0 +1,45 @@
+.............C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 400: 'Bad Request'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+..演示：已就地修改 frames.csv 的最后 2 行（泵送压力）
+..模拟断网：开启
+模拟断网：关闭
+注入故障：泵送压力 -> 18.6MPa（保持 40 秒）
+..注入故障：泵送压力 -> 18.6MPa（保持 40 秒）
+.演示：已就地修改 frames.csv 的最后 1 行（速凝剂流量）
+..C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 404: 'Not Found'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+.....EEE
+======================================================================
+ERROR: ; (unittest.loader._FailedTest.;)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: ;
+Traceback (most recent call last):
+  File "C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+ModuleNotFoundError: No module named ';'
+
+
+======================================================================
+ERROR: type (unittest.loader._FailedTest.type)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: type
+Traceback (most recent call last):
+  File "C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+ModuleNotFoundError: No module named 'type'
+
+
+======================================================================
+ERROR: tw (unittest.loader._FailedTest.tw)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: tw
+Traceback (most recent call last):
+  File "C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+ModuleNotFoundError: No module named 'tw'
+
+
+----------------------------------------------------------------------
+Ran 30 tests in 1.075s
+
+FAILED (errors=3)

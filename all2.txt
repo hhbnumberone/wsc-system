@@ -1,0 +1,117 @@
+.......................................................................C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 400: 'Bad Request'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+.C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 409: 'Conflict'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+...C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 404: 'Not Found'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+.D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BA110>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774B97B0>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774B9D50>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BAC50>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774B96C0>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.................................................................................................................F..................D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774B9300>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774B8C70>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774B8E50>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BBC40>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BB3D0>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BA7A0>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BA5C0>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BA890>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BB4C0>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BAE30>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BB6A0>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BB2E0>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BBA60>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BB1F0>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BB970>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774B8F40>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BAA70>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BA200>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BA4D0>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BB5B0>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BB010>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BB790>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BB880>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BA2F0>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BBB50>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BAD40>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1106: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000201774BAB60>
+  " FROM piles WHERE active=1 ORDER BY mileage_m, pile_id").fetchall()]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+............................................................................................................................................
+======================================================================
+FAIL: test_every_page_is_dispatched (test_terminal_web.PageContractTests.test_every_page_is_dispatched)
+每个页面的 data-page 都要在 app.js 的分派表里有对应实现。
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\新建文件夹 (2)\wsc-system\tests\test_terminal_web.py", line 435, in test_every_page_is_dispatched
+    self.assertIn(page + ":", dispatch.group(1), f"分派表里没有 {page}")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'records:' not found in ' index: initIndex, usb: initUsb, settings: initSettings ' : 分派表里没有 records
+
+----------------------------------------------------------------------
+Ran 348 tests in 9.355s
+
+FAILED (failures=1)

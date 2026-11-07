@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>历史数据 — 耿力大数据平台</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="history">
+
+<div class="topbar">
+  <div class="brand">耿力大数据平台<small>历史数据</small></div>
+  <nav>
+    <a href="/">运行总览</a>
+    <a href="/history.html" class="on">历史数据</a>
+    <a href="/devices.html">设备与传输</a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="meta">
+    <div id="site">—</div>
+    <div id="clock">--:--:--</div>
+  </div>
+</div>
+
+<main>
+  <div id="banner" class="banner hidden"></div>
+
+  <div class="row cols-4">
+    <div class="card kpi accent">
+      <div class="k">区间内的记录</div>
+      <div class="v" id="h-frames">—</div>
+      <div class="s" id="h-range">—</div>
+    </div>
+    <div class="card kpi ok">
+      <div class="k">区间内方量</div>
+      <div class="v" id="h-volume">—</div>
+      <div class="s">按已完成的喷浆循环累加</div>
+    </div>
+    <div class="card kpi">
+      <div class="k">区间内报警</div>
+      <div class="v" id="h-alarms">—</div>
+      <div class="s">边沿触发 + 回滞，一次越限只记一条</div>
+    </div>
+    <div class="card kpi warn">
+      <div class="k">被修正的记录</div>
+      <div class="v" id="h-rev">—</div>
+      <div class="s">原始值永久保留，修改单独留痕</div>
+    </div>
+  </div>
+
+  <div class="card mt">
+    <h2>历史曲线
+      <span class="spacer"></span>
+      <span class="ctrl">
+        <label>参数</label><select id="param"></select>
+        <label>粒度</label>
+        <select id="bucket">
+          <option value="hour" selected>按小时</option>
+          <option value="day">按天</option>
+        </select>
+        <label>范围</label>
+        <select id="days">
+          <option value="1">最近 1 天</option>
+          <option value="3">最近 3 天</option>
+          <option value="7" selected>最近 7 天</option>
+          <option value="30">最近 30 天</option>
+          <option value="90">最近 90 天</option>
+        </select>
+        <span class="note" id="h-stat"></span>
+      </span>
+    </h2>
+    <div class="body">
+      <canvas id="hchart" width="1100" height="270"></canvas>
+      <div class="legend" id="hlegend"></div>
+      <p class="note">
+        柱为每桶均值，上下须线为区间最大/最小值。灰底柱表示该时段有报警。
+        历史数据由 <code>--seed</code> 生成的 30 天演示数据与终端实时上传的数据共同构成，
+        两者波形同一套物理模型（<code>common/machine.py</code>）。
+      </p>
+    </div>
+  </div>
+
+  <div class="card mt">
+    <h2>原始记录 <span class="spacer"></span>
+      <span class="ctrl">
+        <span class="note" id="f-stat"></span>
+        <a id="export" href="#" style="color:var(--accent);font-size:13px">导出 CSV</a>
+      </span>
+    </h2>
+    <div class="body tight">
+      <div class="scroll">
+        <table class="grid">
+          <thead><tr>
+            <th>时间</th><th>桩号</th><th class="num">泵送压力<br><span style="font-weight:400">MPa</span></th>
+            <th class="num">速凝剂流量<br><span style="font-weight:400">L/h</span></th>
+            <th class="num">液压油温<br><span style="font-weight:400">℃</span></th>
+            <th class="num">电机电流<br><span style="font-weight:400">A</span></th>
+            <th>来源</th><th>数据状态</th><th></th>
+          </tr></thead>
+          <tbody id="frames"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="drawer" class="hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

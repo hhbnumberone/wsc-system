@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>耿力大数据平台 — 湿喷台车监测</title>
+<link rel="stylesheet" href="style.css?v=1103">
+</head>
+<body data-page="overview">
+
+<div class="topbar">
+  <div class="brand">耿力大数据平台<small id="proj">湿喷台车信息化系统</small></div>
+  <div class="spacer"></div>
+  <button id="btn-shutdown" class="shutdown">关闭系统</button>
+  <div class="meta">
+    <div id="site">—</div>
+    <div id="clock">--:--:--</div>
+  </div>
+</div>
+
+<div class="frame">
+    <aside class="side">
+    <div class="side-grp">实时监测</div>
+    <a href="/" class=" on"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm10 8h8V11h-8v10zM3 21h8v-6H3v6zm10-12h8V3h-8v6z"/></svg><span>运行总览</span></a>
+    <a href="/alarms.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22a2 2 0 002-2h-4a2 2 0 002 2zm6-6v-5a6 6 0 10-12 0v5l-2 2v1h16v-1l-2-2z"/></svg><span>报警与循环</span></a>
+    <div class="side-grp">历史查询</div>
+    <a href="/history.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg><span>历史数据</span></a>
+    <a href="/frames.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm2 2v4h14V5H5zm0 6v4h14v-4H5zm0 6v2h14v-2H5z"/></svg><span>原始记录</span></a>
+    <div class="side-grp">传输审计</div>
+    <a href="/devices.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v4H4zm0 8h16v4H4zm-2-9h2v2H2zm0 8h2v2H2zm18 8h2v2h-2zM2 21h16v2H2z"/></svg><span>传输监控</span></a>
+    <a href="/audit.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg><span>审计与拒收</span></a>
+  </aside>
+
+<main>
+  <div id="banner" class="banner hidden"></div>
+
+  <!-- ---------------- KPI ---------------- -->
+  <div class="row cols-4">
+    <div class="card kpi" id="k-dev"><div class="k">设备在线</div><div class="v">—</div><div class="s">—</div></div>
+    <div class="card kpi accent" id="k-frames"><div class="k">近 24 小时采集</div><div class="v">—</div><div class="s">—</div></div>
+    <div class="card kpi ok" id="k-cycles"><div class="k">近 24 小时日志</div><div class="v">—</div><div class="s">—</div></div>
+    <div class="card kpi" id="k-alarm"><div class="k">报警</div><div class="v">—</div><div class="s">—</div></div>
+  </div>
+
+  <!-- ---------------- 实时曲线 ---------------- -->
+  <div class="row cols-2b mt grow">
+    <div class="card">
+      <h2>实时曲线
+        <span class="spacer"></span>
+        <span class="ctrl">
+          <label>时间窗</label>
+          <select id="win">
+            <option value="10" selected>最近 10 分钟</option>
+            <option value="30">最近 30 分钟</option>
+            <option value="120">最近 2 小时</option>
+            <option value="1440">最近 24 小时</option>
+          </select>
+          <span id="series-stat" class="note"></span>
+        </span>
+      </h2>
+      <div class="body">
+        <canvas id="chart" width="1000" height="390"></canvas>
+        <div class="legend" id="legend"></div>
+        <p class="note" style="padding:6px 2px 0">
+          棕色虚线为各参数正常范围上下限；点击图例可显示或隐藏对应参数曲线。
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>设备状态 <span class="spacer"></span><span class="note" id="dev-count"></span></h2>
+      <div class="body dev" id="devbox"><div class="empty">加载中…</div></div>
+      <p class="note" style="padding:0 14px 10px">在线判定依据心跳新鲜度，与设备自报状态字段无关。</p>
+    </div>
+  </div>
+
+  <p class="note mt" style="padding:0 2px">
+    数据来源：车载终端按 <code id="interval">2</code> 秒一帧采集，断网期间在本地缓存，
+    恢复后按时序补传。平台只接受<strong>平台已下发桩号</strong>的记录 ——
+    终端界面上没有桩号输入框，改不了里程。
+    <a href="/devices.html" style="color:var(--accent)">查看传输与拒收明细 →</a>
+  </p>
+</main>
+</div>
+
+<script src="app.js?v=1103"></script>
+</body>
+</html>

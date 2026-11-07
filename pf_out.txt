@@ -1,0 +1,89 @@
+C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 400: 'Bad Request'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+.C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 409: 'Conflict'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+...C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 404: 'Not Found'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+.D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x0000017845A43100>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x0000017845A435B0>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x0000017845A43880>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x0000017845A43790>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x0000017845A42E30>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+...............F..F....EEE
+======================================================================
+ERROR: ; (unittest.loader._FailedTest.;)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: ;
+Traceback (most recent call last):
+  File "C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+ModuleNotFoundError: No module named ';'
+
+
+======================================================================
+ERROR: type (unittest.loader._FailedTest.type)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: type
+Traceback (most recent call last):
+  File "C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+ModuleNotFoundError: No module named 'type'
+
+
+======================================================================
+ERROR: pf_out (unittest.loader._FailedTest.pf_out)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: pf_out
+Traceback (most recent call last):
+  File "C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+ModuleNotFoundError: No module named 'pf_out'
+
+
+======================================================================
+FAIL: test_every_id_used_by_a_page_exists_in_that_page (tests.test_platform_web.WebAssetTests.test_every_id_used_by_a_page_exists_in_that_page)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py", line 341, in test_every_id_used_by_a_page_exists_in_that_page
+    self.assertEqual(missing, [],
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+                     f"{self.PAGES[page]} 里没有这些 id：{missing}")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['export', 'f-stat', 'frames'] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+'export'
+
+- ['export', 'f-stat', 'frames']
++ [] : history.html 里没有这些 id：['export', 'f-stat', 'frames']
+
+======================================================================
+FAIL: test_no_id_is_used_but_declared_nowhere (tests.test_platform_web.WebAssetTests.test_no_id_is_used_but_declared_nowhere)
+id 拼错成别的名字时，上面那条会漏掉（它只比对所在页）。
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py", line 357, in test_no_id_is_used_but_declared_nowhere
+    self.assertEqual(all_declared[i], page,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+                     f"{page} 用了属于 {all_declared[i]} 的 id {i}")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'frames' != 'history'
+- frames
++ history
+ : history 用了属于 frames 的 id frames
+
+----------------------------------------------------------------------
+Ran 31 tests in 1.363s
+
+FAILED (failures=2, errors=3)

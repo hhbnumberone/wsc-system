@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>报警与循环 — 耿力大数据平台</title>
+<link rel="stylesheet" href="style.css?v=1103">
+</head>
+<body data-page="alarms">
+
+<div class="topbar">
+  <div class="brand">耿力大数据平台</div>
+  <div class="spacer"></div>
+  <button id="btn-shutdown" class="shutdown">关闭系统</button>
+  <div class="meta">
+    <div id="site">—</div>
+    <div id="clock">--:--:--</div>
+  </div>
+</div>
+
+<div class="frame">
+  <aside class="side">
+    <div class="side-grp">实时监测</div>
+    <a href="/" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm10 8h8V11h-8v10zM3 21h8v-6H3v6zm10-12h8V3h-8v6z"/></svg><span>运行总览</span></a>
+    <a href="/alarms.html" class=" on"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22a2 2 0 002-2h-4a2 2 0 002 2zm6-6v-5a6 6 0 10-12 0v5l-2 2v1h16v-1l-2-2z"/></svg><span>报警与循环</span></a>
+    <div class="side-grp">历史查询</div>
+    <a href="/history.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg><span>历史数据</span></a>
+    <a href="/frames.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm2 2v4h14V5H5zm0 6v4h14v-4H5zm0 6v2h14v-2H5z"/></svg><span>原始记录</span></a>
+    <div class="side-grp">传输审计</div>
+    <a href="/devices.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v4H4zm0 8h16v4H4zm-2-9h2v2H2zm0 8h2v2H2zm18 8h2v2h-2zM2 21h16v2H2z"/></svg><span>传输监控</span></a>
+    <a href="/audit.html" class=""><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg><span>审计与拒收</span></a>
+  </aside>
+<main>
+  <div id="banner" class="banner hidden"></div>
+  <div class="row cols-2 mt grow">
+    <div class="card">
+      <h2>报警记录 <span class="spacer"></span>
+        <span class="ctrl">
+          <label><input type="checkbox" id="actonly"> 只看未恢复</label>
+          <span class="note" id="alarm-stat"></span>
+        </span>
+      </h2>
+      <div class="body tight">
+        <div class="scroll sm">
+          <table class="grid">
+            <thead><tr>
+              <th>开始</th><th>参数</th><th>级别</th><th class="num">峰值</th>
+              <th class="num">时长</th><th>状态</th><th>桩号</th>
+            </tr></thead>
+            <tbody id="alarms"></tbody>
+          </table>
+        </div>
+        <p class="note" style="padding:10px 14px 14px">
+          报警按<strong>边沿触发加回滞</strong>判定：一次越限只记一条，
+          数值回到正常范围并留出回滞带之后才判定为已恢复。
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>日志数据 <span class="spacer"></span><span class="note" id="cyc-stat"></span></h2>
+      <div class="body tight">
+        <div class="scroll sm">
+          <table class="grid">
+            <thead><tr>
+              <th>开始时间</th><th>桩号</th><th class="num">实喷方量 m³</th>
+              <th class="num">速凝剂单次 L</th><th class="num">累计工时 h</th><th>喷射部位</th>
+            </tr></thead>
+            <tbody id="cycles"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+
+<script src="app.js?v=1103"></script>
+</body>
+</html>

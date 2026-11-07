@@ -1,0 +1,18 @@
+.............C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 400: 'Bad Request'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+..C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\csv.py:222: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x0000028D0CECE020>
+  return (rowdict.get(key, self.restval) for key in self.fieldnames)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+演示：已就地修改 frames.csv 的最后 2 行（泵送压力）
+..模拟断网：开启
+模拟断网：关闭
+注入故障：泵送压力 -> 18.6MPa（保持 40 秒）
+..注入故障：泵送压力 -> 18.6MPa（保持 40 秒）
+.演示：已就地修改 frames.csv 的最后 1 行（速凝剂流量）
+..C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 404: 'Not Found'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+.....
+----------------------------------------------------------------------
+Ran 27 tests in 1.019s
+
+OK

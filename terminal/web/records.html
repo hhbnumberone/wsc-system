@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>湿喷台车车载终端</title>
+<link rel="stylesheet" href="style.css?v=1103">
+</head>
+<body data-page="records">
+
+<!-- 状态栏、导航、横幅由 app.js 挂载（六个页面共用，见 mountChrome） -->
+<div id="chrome"></div>
+
+<div class="wrap" style="grid-template-columns:minmax(260px,.75fr) minmax(320px,1fr) minmax(430px,1.5fr)">
+
+  <!-- ===================== 左：作业桩号 ===================== -->
+  <div class="card">
+    <h2><span class="ttl">作业桩号</span> <span class="spacer"></span>
+      <span id="pilever" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div id="pilelist"></div>
+      <div class="note">
+        桩号由平台统一下发，终端仅提供点选。<br>
+        <code>不支持手工录入</code>，防止现场自编桩号。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 中：喷浆循环 + 本地存储 ===================== -->
+  <div class="colstack">
+    <div class="card">
+      <h2><span class="ttl">日志数据（喷浆循环）</span> <span class="spacer"></span>
+        <span id="cycstat" style="font-weight:400"></span>
+      </h2>
+      <div class="body">
+        <div id="cycnow" class="note" style="margin-top:0;font-size:14px">尚未开始</div>
+        <div class="scroll" style="margin-top:8px">
+          <table class="grid">
+            <thead><tr><th>桩号</th><th>起止</th><th class="num">实喷方量</th><th class="num">速凝剂单次</th><th>喷射部位</th></tr></thead>
+            <tbody id="cyclist"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ttl">本地存储</span></h2>
+      <div class="body">
+        <div class="note" style="margin-top:0">本地存储：<span id="storage">—</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 右：采集记录 ===================== -->
+  <div class="card">
+    <h2><span class="ttl">采集记录（本地库）</span> <span class="spacer"></span>
+      <span id="locstatinfo" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="scroll">
+        <table class="grid">
+          <thead><tr>
+            <th>时间</th><th>桩号</th><th class="num">泵送压力</th><th class="num">泵送速度</th>
+            <th class="num">速凝剂添加速度</th><th>状态</th>
+          </tr></thead>
+          <tbody id="reclist"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js?v=1103"></script>
+</body>
+</html>

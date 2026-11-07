@@ -1,0 +1,107 @@
+.......................................................................C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 400: 'Bad Request'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+.C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 409: 'Conflict'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+...C:\Users\14357\AppData\Local\Python\pythoncore-3.14-64\Lib\tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 404: 'Not Found'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+.D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BDF30>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BD5D0>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BDB70>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BEA70>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\tests\test_platform_web.py:81: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BD4E0>
+  gc.collect()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+....................................................................................................................................D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BCF40>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BD030>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BCA90>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BE3E0>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BFA60>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BCD60>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BE5C0>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BCC70>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BF2E0>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BCB80>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BF010>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BF1F0>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BF100>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BF4C0>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BE6B0>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BEC50>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BF790>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BED40>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BE890>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BE020>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BF880>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BE7A0>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BF6A0>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BE110>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BE2F0>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BEF20>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\新建文件夹 (2)\wsc-system\terminal\store.py:1104: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000222EB3BE980>
+  return [dict(r) for r in self.conn.execute(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+............................................................................................................................................
+----------------------------------------------------------------------
+Ran 348 tests in 9.439s
+
+OK

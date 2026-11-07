@@ -1,0 +1,107 @@
+{
+  "project": {
+    "name": "湿喷台车信息化系统",
+    "company": "河南省耿力工程设备有限公司",
+    "platform": "耿力大数据平台"
+  },
+  "site": {
+    "site_id": "DQTYX-ZK",
+    "site_name": "大丘田隧道右线",
+    "project_name": "义龙庆高速",
+    "tunnel": "大丘田隧道",
+    "line": "右线"
+  },
+  "sites": [
+    {
+      "site_id": "DQTYX-ZK",
+      "site_name": "大丘田隧道右线",
+      "project_name": "义龙庆高速",
+      "tunnel": "大丘田隧道",
+      "line": "右线",
+      "mileage_from": 104907,
+      "mileage_to": 105707
+    },
+    {
+      "site_id": "SML-ZK",
+      "site_name": "杉木岭隧道右线",
+      "project_name": "义龙庆高速",
+      "tunnel": "杉木岭隧道",
+      "line": "右线",
+      "mileage_from": 106000,
+      "mileage_to": 106800
+    }
+  ],
+  "device": {
+    "device_code": "GHP9015H",
+    "device_name": "湿喷台车 GHP9015H",
+    "model": "GHP9015H"
+  },
+  "can": {
+    "source": "sim",
+    "seed": 20261005,
+    "bustype": "socketcan",
+    "channel": "can0",
+    "bitrate": 500000,
+    "max_age_s": 3.0,
+    "recv_timeout_s": 0.2,
+    "signals": []
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8700
+  },
+  "terminal": {
+    "host": "127.0.0.1",
+    "port": 8701
+  },
+  "acquisition": {
+    "sample_interval_s": 2.0,
+    "heartbeat_interval_s": 5.0,
+    "cycle_start_pressure": 3.0,
+    "cycle_start_hold_s": 3.0,
+    "cycle_end_pressure": 1.0,
+    "cycle_end_hold_s": 10.0
+  },
+  "upload": {
+    "interval_s": 2.0,
+    "batch_max_records": 200,
+    "timeout_s": 3.0,
+    "max_attempts": 8,
+    "backoff_s": [
+      2,
+      4,
+      8,
+      15,
+      30,
+      60
+    ],
+    "inflight_timeout_s": 120.0,
+    "connect_timeout_s": 2.0
+  },
+  "network": {
+    "probe_interval_s": 5.0,
+    "fail_degraded": 2,
+    "fail_offline": 5,
+    "manual_offline": false,
+    "probe_path": "/api/health"
+  },
+  "retention": {
+    "csv_days": 30,
+    "collect_interval_s": 3600.0,
+    "frames_days": 400
+  },
+  "alarms": {
+    "enabled": true,
+    "list_limit": 500
+  },
+  "seed": {
+    "days": 30,
+    "interval_s": 60,
+    "seed": 20261005,
+    "cycles_per_day": 6
+  },
+  "ui": {
+    "poll_interval_ms": 1000,
+    "chart_points": 60
+  }
+}

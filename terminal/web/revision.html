@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>湿喷台车车载终端</title>
+<link rel="stylesheet" href="style.css?v=1103">
+</head>
+<body data-page="revision">
+
+<!-- 状态栏、导航、横幅由 app.js 挂载（六个页面共用，见 mountChrome） -->
+<div id="chrome"></div>
+
+<div class="wrap" style="grid-template-columns:minmax(380px,.9fr) minmax(420px,1.1fr)">
+
+  <!-- ===================== 左：③ 导入为修订 ===================== -->
+  <div class="card">
+    <h2><span class="ttl">③ 导入为修订</span></h2>
+    <div class="body">
+      <div class="row">
+        <span class="lbl">数据包</span>
+        <select id="imp-bundle" style="min-width:220px"></select>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <span class="lbl">操作人</span>
+        <input id="imp-operator" placeholder="姓名（必填）" style="width:130px">
+        <span class="lbl">原因</span>
+        <select id="imp-reason" style="flex:1"></select>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <span class="lbl">备注</span>
+        <input id="imp-note" placeholder="选填，会一起上传" style="flex:1">
+        <button id="btn-import">导入为修订</button>
+      </div>
+      <div class="note">
+        导入<b>不覆盖原始值</b>：平台收到的是「某条记录、某个参数、从多少改成多少、
+        经手人、原因」的修订说明，原值永久保存。
+      </div>
+      <div class="grp">
+        <div class="gt">修订规则</div>
+        <div class="kvs">
+          <div class="kv"><span>原始值</span><b>永久保留，不因修订丢失</b></div>
+          <div class="kv"><span>操作人</span><b>必填，随修订批次一并上传</b></div>
+          <div class="kv"><span>不合法行</span><b>任一行不合法则整包拒收</b></div>
+          <div class="kv"><span>发送时机</span><b>待欠传数据全部补传后再发送</b></div>
+        </div>
+      </div>
+      <div class="grp">
+        <div class="gt">批次状态含义</div>
+        <div class="kvs">
+          <div class="kv"><span>排队中</span><b>等待欠传数据补传完成后自动发送</b></div>
+          <div class="kv"><span>已上传</span><b>平台已接收并入库</b></div>
+          <div class="kv"><span>被拒收</span><b>永久失败，需人工处理</b></div>
+        </div>
+      </div>
+      <div id="imp-result"><div class="note">导入结果将显示在这里</div></div>
+    </div>
+  </div>
+
+  <!-- ===================== 右：④ 修订队列 ===================== -->
+  <div class="card">
+    <h2><span class="ttl">④ 修订队列</span> <span class="spacer"></span>
+      <span id="revstat" style="font-weight:400"></span>
+    </h2>
+    <div class="body">
+      <div class="scroll">
+        <table class="grid">
+          <thead><tr>
+            <th>生成时间</th><th>操作人</th><th>原因</th><th>改动</th><th>状态</th>
+          </tr></thead>
+          <tbody id="revlist"></tbody>
+        </table>
+      </div>
+      <div class="note">
+        修订批次在欠传数据全部补传完成后才会发送。若目标记录尚未上传至平台，
+        平台将整批拒收；拒收属于永久失败，需人工处理。<br>
+        左侧完成一次导入后，每一条修订及其上传状态会列在上面的表中。
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js?v=1103"></script>
+</body>
+</html>
